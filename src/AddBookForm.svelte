@@ -27,20 +27,20 @@
 class= "p-4 flex flex-col gap-4"
 on:submit|preventDefault={handleSubmit}>
   <label for="title">Book Titles:
-    <input type="text" name="title">
+    <input type="text" name="title" value="unknown" required >
   </label>
   <label for="author">Book Author:
-    <input type="text" name="author">
+    <input type="text" name="author" value="unknown" required>
   </label>
-  <label for="pages">Pages:
-    <input type="text" name="pages">
+  <label for="pages" >Pages:
+    <input type="number" max="10000" name="pages" value="0" required>
   </label>
   <label for="isRead" class='flex center gap-2'>
-    <span>Read:</span>
     <input 
     class='h-6 w-6'
     type="checkbox" 
     name="isRead">
+    <span>Read</span>
   </label>
   <button type="submit">submit</button>
 </form>
