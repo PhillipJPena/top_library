@@ -1,17 +1,25 @@
 <script>
-  import BookItem from "./BookItem.svelte"
-  import { books } from './store.js'
+  // @ts-nocheck
 
-console.log($books);
+  import BookItem from "./BookItem.svelte";
+  import { books } from "./store.js";
+  import { fly, scale } from "svelte/transition";
+  import { flip } from "svelte/animate";
 </script>
 
-<style>
-  /* your styles go here */
-</style>
-
-<ul class="flex gap-4 flex-wrap">
-  {#each $books as book}
-    <BookItem book={book}/>
+<ul
+  class="flex flex-wrap justify-center gap-4 w-full bg-slate-200 p-4 rounded-xl">
+  {#each $books as book (book.uid)}
+    <!-- content here -->
+    <li transition:scale animate:flip={{ duration: 400 }}>
+      <BookItem {...book} />
+    </li>
   {/each}
+  {#if !$books.length}
+    <div>
+      <p class="text-slate-400 font-bold">
+        Click 'Add Book' to add to your library.
+      </p>
+    </div>
+  {/if}
 </ul>
-

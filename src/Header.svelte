@@ -1,8 +1,4 @@
-<style>
-  h1 {
-    font-size: 2.5rem;
-  }
-</style>
-
-<h1>Library</h1>
-
+<div class="self-start">
+  <h1 class="text-4xl font-bold">Library</h1>
+  <p>by Phillip Peña</p>
+</div>

@@ -1,18 +1,12 @@
+// @ts-nocheck
 import { writable } from "svelte/store";
+import Book from "./models/bookModel";
 
 export const books = writable([
-  {
-    title: "The Cat in the Hat",
-    author: "Dr. Suess",
-    pages: 24,
-    isRead: "off",
-  },
-  {
-    title: "Green Eggs and Ham",
-    author: "Dr. Suess",
-    pages: 19,
-    isRead: "off",
-  },
+  new Book({title:'Book 1', author:"Doctor Seuss", pages:23}),
+  new Book({title:'Book 2', author:"Doctor Seuss", pages:23}),
+  new Book({title:'Book 3', author:"Doctor Seuss", pages:23}),
 ]);
 
-export const isModalVisible = writable(false);
+export const modalState = writable(false);
+export const formType = writable(null);
