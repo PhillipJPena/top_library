@@ -1,6 +1,8 @@
 <script>
   // @ts-nocheck
 
+  import { claim_svg_element } from "svelte/internal";
+
   import Book from "./models/bookModel.js";
   import { books, modalState } from "./store.js";
 
@@ -25,6 +27,9 @@
       const [key, value] = field;
       edit[key] = value;
     }
+
+    edit.isRead = edit.isRead ?? null;
+
     $books = $books.map(obj => {
       if (obj.uid === edit.uid) {
         return { ...edit };
@@ -69,7 +74,12 @@
       class="checkbox checkbox-accent border-slate-800 border-2 text-white checkbox-lg"
       type="checkbox"
       name="isRead"
-      checked={edit ? edit.isRead : ""} />
+      checked={edit ? edit.isRead : false}
+      on:input={e => {
+        if (!e.target.checked && edit) {
+          edit.isRead = false;
+        }
+      }} />
   </div>
   <button class="btn mt-4" type="submit">submit</button>
 </form>
